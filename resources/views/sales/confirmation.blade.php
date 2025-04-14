@@ -37,7 +37,6 @@
                                         <h5>Produk yang Dibeli</h5>
                                         <ul class="list-group">
                                             @foreach ($products as $key => $product)
-                                            dd)
                                                 <li class="list-group-item">
                                                     <strong>{{ $key + 1 . '. ' . $product->name}}</strong>
                                                     <br>Harga: Rp {{ number_format($product->price, 0, ',', '.') }}
