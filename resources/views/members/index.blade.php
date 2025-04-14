@@ -57,7 +57,7 @@
                                             @if (Auth::user()->role == 'superadmin')
                                                 <td class="text-center">
                                                     <a href="{{ route('members.edit', $member->id) }}"
-                                                        class="btn btn-primary btn-sm">Edit</a>
+                                                        class="btn btn-warning btn-sm">Edit</a>
                                                     <form action="{{ route('members.destroy', $member->id) }}"
                                                         method="POST" class="delete-form d-inline">
                                                         @csrf

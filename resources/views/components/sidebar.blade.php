@@ -62,7 +62,7 @@
                 @if (Auth::user()->role == 'user')
                     <!-- Menu -->
                     <li class="menu-header text-uppercase text-muted small px-4 mb-3 mt-4">Menu</li>
-                    <li class="{{ Request::is('product') ? 'active' : '' }}">
+                    <li class="{{ Request::is('products') ? 'active' : '' }}">
                         <a class="nav-link d-flex align-items-center px-4 py-2 rounded hover-bg-light"
                             href="{{ route('products.index') }}">
                             <i class="fas fa-shopping-bag me-3 text-info"></i>

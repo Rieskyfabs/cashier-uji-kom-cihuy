@@ -58,7 +58,7 @@
                                             <td>{{ $item->quantity }}</td>
                                             @if (Auth::user()->role == 'superadmin')
                                                 <td class="text-center">
-                                                    <button type="button" class="btn btn-primary edit-stock-btn"
+                                                    <button type="button" class="btn btn-warning edit-stock-btn"
                                                         data-id="{{ $item->id }}" data-name="{{ $item->name }}"
                                                         data-quantity="{{ $item->quantity }}" data-toggle="modal"
                                                         data-target="#editStockModal">

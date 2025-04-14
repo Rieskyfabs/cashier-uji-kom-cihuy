@@ -52,7 +52,7 @@
                                                 <td>{{ $item->role }}</td>
                                                 <td class="text-center">
                                                     <a href="{{ route('user.edit', $item->id) }}"
-                                                        class="btn btn-primary">Edit</a>
+                                                        class="btn btn-warning">Edit</a>
                                                     <form action="{{ route('user.destroy', $item->id) }}" method="POST"
                                                         class="delete-form" style="display: inline-block;">
                                                         @csrf

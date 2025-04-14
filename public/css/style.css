@@ -1880,7 +1880,7 @@ h6 .badge {
   background-color: transparent;
 }
 .navbar.active {
-  background-color: #6777ef;
+  background-color: #FFF085;
   box-shadow: rgba(103, 119, 239, 0.2) rgba(0, 0, 0, 0.03);
 }
 
@@ -1891,7 +1891,7 @@ h6 .badge {
   left: 0;
   width: 100%;
   height: 80px;
-  background: linear-gradient(135deg, #6a7dfd, #88a6f3); /* Soft gradient */
+  background: linear-gradient(135deg, #FF9B17, #FF9B17); /* Soft gradient */
   z-index: -1;
 }
 
