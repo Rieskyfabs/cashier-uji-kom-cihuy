@@ -27,46 +27,5 @@ class UserController extends Controller
         return view('superadmin.user.index', compact('users'));
     }
 
-    public function create()
-    {
-        return view('superadmin.user.create');
-    }
 
-    public function store(Request $request)
-    {
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role = $request->role;
-        $user->save();
-
-        return redirect()->route('user.index')->with('message', 'User created successfully!');
-    }
-
-    public function edit($id)
-    {
-        $user = User::find($id);
-
-        return view('superadmin.user.edit', compact('user'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->password = Hash::make($request->password);
-        $user->role = $request->role;
-        $user->save();
-
-        return redirect()->route('user.index')->with('message', 'User updated successfully!');
-    }
-
-    public function destroy($id)
-    {
-        $user = User::find($id);
-        $user->delete();
-
-        return redirect()->route('user.index');
-    }
 }
