@@ -41,6 +41,12 @@
                                     </div>
 
                                     <div class="form-group mb-3">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" name="email" id="email"
+                                            placeholder="Email" value="{{ old('email', $user->email) }}" required>
+                                    </div>
+
+                                    <div class="form-group mb-3">
                                         <label for="password">Password <small>(Biarkan kosong jika tidak ingin
                                                 mengubah)</small></label>
                                         <input type="password" class="form-control" name="password" id="password"

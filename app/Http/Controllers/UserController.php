@@ -17,11 +17,12 @@ class UserController extends Controller
 
         if ($request->has('search') && $request->search !== null) {
             $search = strtolower($request->search);
-            $users = User::whereRaw('LOWER(name) LIKE ?', ['%'.$search.'%'])
+            $users = User::where('role', 'user')
+                ->whereRaw('LOWER(name) LIKE ?', ['%'.$search.'%'])
                 ->paginate(10)
                 ->appends($request->only('search'));
         } else {
-            $users = User::paginate(10);
+            $users = User::where('role', 'user')->paginate(10);
         }
 
         return view('superadmin.user.index', compact('users'));
@@ -55,6 +56,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->name = $request->name;
+        $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->role = $request->role;
         $user->save();  

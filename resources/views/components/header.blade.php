@@ -19,9 +19,6 @@
                     <div class="dropdown-title">
                         Selamat Datang, {{ substr(auth()->user()->name, 0, 10) }}
                     </div>
-                    <a class="dropdown-item has-icon edit-profile" href="#">
-                        <i class="fa fa-user"></i> Edit Profile
-                    </a>
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
