@@ -11,4 +11,9 @@ class SalesExportController extends Controller
     {
         return Excel::download(new SalesExport, 'sales.xlsx');
     }
+
+    public function exportExcel()
+    {
+        return Excel::download(new SalesExport, 'sales.xlsx');
+    }
 }
