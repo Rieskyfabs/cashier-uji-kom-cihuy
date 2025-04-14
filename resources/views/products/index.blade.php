@@ -17,16 +17,16 @@
                         <div class="table-responsive">
                             <div class="row mb-3">
                                 <div class="col-md-12 d-flex justify-content-between align-items-center">
-                                    {{-- <form action="{{ route('products.index') }}" method="GET" class="d-flex"
-                                    style="max-width: 100%%;">
-                                    <div class="input-group">
-                                        <input type="text" name="search" class="form-control rounded"
-                                        placeholder="Search">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary rounded ml-2" type="submit">Search</button>
-                                        </div>
-                                    </div>
-                                </form> --}}
+                                        <form action="{{ route('products.index') }}" method="GET" class="d-flex"
+                                            style="max-width: 100%%;">
+                                            <div class="input-group">
+                                                <input type="text" name="search" class="form-control rounded"
+                                                placeholder="Search">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary rounded ml-2" type="submit">Search</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     @if (Auth::user()->role == 'superadmin')
                                         <a href="{{ route('products.create') }}" class="btn btn-success ml-2 p-2">
                                             Create Product
