@@ -50,27 +50,52 @@
                                                 </tr>
                                             @endforeach
                                         </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                                <td class="text-end"><strong>{{ array_sum(array_column($productData, 'quantity')) }}</strong></td>
+                                                <td><strong>Rp {{ number_format($totalAmount, 0, ',', '.') }}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="text-end"><strong>Diskon:</strong></td>
+                                                <td class="text-end"><strong>{{ $discount > 0 ? 'Rp ' . number_format($discount, 0, ',', '.') : '0%' }}</strong></td>
+                                                <td><strong>Rp {{ number_format($totalAmount - $discount, 0, ',', '.') }}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="text-end"><strong>Total Bayar:</strong></td>
+                                                <td class="text-end"><strong>{{ $totalPay > 0 ? 'Rp ' . number_format($totalPay, 0, ',', '.') : 'Tidak Ada' }}</strong></td>
+                                                <td><strong>Rp {{ number_format($totalPay, 0, ',', '.') }}</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" class="text-end"><strong>Kembalian:</strong></td>
+                                                {{-- <td class="text-end"><strong>{{ $totalPay > $totalAmount ? 'Rp ' . number_format($totalPay - $totalAmount + $discount, 0, ',', '.') : 'Tidak Ada' }}</strong></td> --}}
+                                                <td><strong>Rp {{ number_format($totalPay - $totalAmount + $discount, 0, ',', '.') }}</strong></td>
+                                            </tr>
+                                            {{-- <tr>
+                                                <td colspan="5">
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-6">
+                                                            <p><strong>Total Pembayaran:</strong> Rp
+                                                                {{ number_format($totalPay, 0, ',', '.') }}</p>
+                                                            <p><strong>Total Belanja:</strong> Rp
+                                                                {{ number_format($totalAmount, 0, ',', '.') }}</p>
+                                                            @if ($discount > 0)
+                                                                <p><strong>Total Potongan:</strong> Rp
+                                                                    {{ number_format($discount, 0, ',', '.') }}</p>
+                                                                <p><strong>Total Setelah Potongan:</strong> Rp
+                                                                    {{ number_format($totalAmount - $discount, 0, ',', '.') }}</p>
+                                                                <p><strong>Kembalian:</strong> Rp
+                                                                    {{ number_format($totalPay - $totalAmount + $discount, 0, ',', '.') }}</p>
+                                                            @else
+                                                                <p><strong>Kembalian:</strong> Rp
+                                                                    {{ number_format($totalPay - $totalAmount, 0, ',', '.') }}</p>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr> --}}
+                                        </tfoot>
                                     </table>
-                                </div>
-
-                                <div class="row mt-4">
-                                    <div class="col-md-6">
-                                        <p><strong>Total Pembayaran:</strong> Rp
-                                            {{ number_format($totalPay, 0, ',', '.') }}</p>
-                                        <p><strong>Total Belanja:</strong> Rp
-                                            {{ number_format($totalAmount, 0, ',', '.') }}</p>
-                                        @if ($discount > 0)
-                                            <p><strong>Total Potongan:</strong> Rp
-                                                {{ number_format($discount, 0, ',', '.') }}</p>
-                                            <p><strong>Total Setelah Potongan:</strong> Rp
-                                                {{ number_format($totalAmount - $discount, 0, ',', '.') }}</p>
-                                            <p><strong>Kembalian:</strong> Rp
-                                                {{ number_format($totalPay - $totalAmount + $discount, 0, ',', '.') }}</p>
-                                        @else
-                                            <p><strong>Kembalian:</strong> Rp
-                                                {{ number_format($totalPay - $totalAmount, 0, ',', '.') }}</p>
-                                        @endif
-                                    </div>
                                 </div>
 
                                 <div class="text-center mt-4">
