@@ -14,25 +14,6 @@ node_modules/
 # Ignore vendor directory (if using PHP Composer)
 vendor/
 
-# Ignore compiled code and cache
-*.pyc
-*.pyo
-__pycache__/
-*.class
-*.jar
-*.war
-*.dll
-*.exe
-*.o
-*.so
-*.out
-*.a
-*.obj
-*.swp
-*.swo
-*.tmp
-*.cache
-
 # Ignore IDE and editor files
 .idea/
 .vscode/
