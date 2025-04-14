@@ -47,7 +47,7 @@
                 </a>
             </li>
             <li class="{{ Request::is('members') ? 'active' : '' }}">
-                <a class="nav-link d-flex align-items-center px-4 py-2 rounded hover-bg-light" href="#">
+                <a class="nav-link d-flex align-items-center px-4 py-2 rounded hover-bg-light" href="{{ route('members.index') }}">
                     <i class="fas fa-user me-3 text-info"></i>
                     <span>Member</span>
                 </a>
