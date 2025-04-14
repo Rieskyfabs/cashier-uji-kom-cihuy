@@ -59,4 +59,9 @@ class HomeController extends Controller
     {
         return view('layouts.blank-page');
     }
+
+    public function error()
+    {
+        return view('layouts.error-page');
+    }
 }
