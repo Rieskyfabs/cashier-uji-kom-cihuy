@@ -33,7 +33,7 @@
                             <form action="{{ route('sales.confirmationStore') }}" method="POST">
                                 @csrf
                                 <div class="row">
-                                    @foreach ($products as $product)
+                                    @forelse ($products as $product)
                                         <div class="col-md-4 d-flex align-items-stretch">
                                             <div class="card mb-3 w-100 d-flex flex-column">
                                                 <div class="d-flex justify-content-center p-3" style="height: 250px; overflow: hidden;">
@@ -49,9 +49,13 @@
                                                         <button type="button" class="btn btn-sm btn-outline-secondary increment" data-id="{{ $product->id }}">+</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>  
                                         </div>
-                                    @endforeach
+                                        @empty
+                                        <div class="col-md-12 text-center">
+                                            <p>Tidak ada produk yang tersedia.</p>
+                                        </div>
+                                    @endforelse
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <a href="{{ route('sales.index') }}" class="btn btn-secondary">Kembali</a>
@@ -68,12 +72,24 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        const submitButton = document.querySelector("button[type='submit']");
+        const quantityInputs = document.querySelectorAll("input[type='number']");
+
+        function updateSubmitButtonState() {
+            let totalQuantity = 0;
+            quantityInputs.forEach(input => {
+                totalQuantity += parseInt(input.value) || 0;
+            });
+            submitButton.disabled = totalQuantity === 0;
+        }
+
         document.querySelectorAll(".increment").forEach(button => {
             button.addEventListener("click", function () {
                 let productId = this.getAttribute("data-id");
                 let input = document.getElementById("quantity-" + productId);
                 if (input) {
                     input.value = parseInt(input.value) + 1;
+                    updateSubmitButtonState();
                 }
             });
         });
@@ -84,9 +100,13 @@
                 let input = document.getElementById("quantity-" + productId);
                 if (input && parseInt(input.value) > 0) {
                     input.value = parseInt(input.value) - 1;
+                    updateSubmitButtonState();
                 }
             });
         });
+
+        // Initial check to disable the button if all quantities are zero
+        updateSubmitButtonState();
     });
 </script>
 
