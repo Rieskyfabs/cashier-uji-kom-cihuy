@@ -17,7 +17,7 @@ Welcome to the repository for laravel 12 - Cashier App
 ### Installation Steps
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Rieskyfabs/cashierApp.git
+    git clone https://github.com/Rieskyfabs/cashier-uji-kom-cihuy.git
     ```
 
 2. Navigate into the project directory:
