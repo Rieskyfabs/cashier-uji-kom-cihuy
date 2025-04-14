@@ -59,13 +59,13 @@
             <!-- Menu -->
             <li class="menu-header text-uppercase text-muted small px-4 mb-3 mt-4">Menu</li>
             <li class="{{ Request::is('product') ? 'active' : '' }}">
-                <a class="nav-link d-flex align-items-center px-4 py-2 rounded hover-bg-light" href="{{ route('product.index') }}">
+                <a class="nav-link d-flex align-items-center px-4 py-2 rounded hover-bg-light" href="{{ route('products.index') }}">
                     <i class="fas fa-shopping-bag me-3 text-info"></i>
                     <span>Produk</span>
                 </a>
             </li>
             <li class="{{ Request::is('sales') ? 'active' : '' }}">
-                <a class="nav-link d-flex align-items-center px-4 py-2 rounded hover-bg-light" href="#">
+                <a class="nav-link d-flex align-items-center px-4 py-2 rounded hover-bg-light" href="{{ route('sales.index') }}">
                     <i class="fas fa-shopping-cart me-3 text-info"></i>
                     <span>Penjualan</span>
                 </a>
