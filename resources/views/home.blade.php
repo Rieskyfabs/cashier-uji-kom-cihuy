@@ -19,7 +19,7 @@
                                         Total Users
                                     </div>
                                     <div class="card-body">
-                                        {{ $totalUsers }}
+                                        <h3>{{ $totalUsers }}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                         Total Sales
                                     </div>
                                     <div class="card-body">
-                                        {{ $totalSales }}
+                                        <h3>{{ number_format($totalSales, 2) }}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                         Total Products
                                     </div>
                                     <div class="card-body">
-                                        {{ $totalProducts }}
+                                        <h3>{{ $totalProducts }}</h3>
                                     </div>
                                 </div>
                             </div>
