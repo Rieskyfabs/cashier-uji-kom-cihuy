@@ -19,7 +19,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithMapping
     public function headings(): array
     {
         return [
-            'No', // Counter column
+            'No',
             'Name',
             'Quantity',
             'Price',
