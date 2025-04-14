@@ -6,87 +6,93 @@
 @endpush
 
 @section('content')
-<div class="main-content-table">
-    <section class="section">
-        <div class="margin-content">
-            <div class="container-sm">
-                <div class="section-header">
-                    <h1>Create Product</h1>
-                </div>
-
-                @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
+    <div class="main-content-table">
+        <section class="section">
+            <div class="margin-content">
+                <div class="container-sm">
+                    <div class="section-header">
+                        <h1>Create Product</h1>
                     </div>
-                @endif
 
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul class="mb-0">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
-                <div class="section-body">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group mb-3">
-                                    <label for="name">Nama Produk</label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Nama Produk" value="{{ old('name') }}" required>
-                                </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-                                <div class="form-group mb-3">
-                                    <label for="price">Harga</label>
-                                    <input type="text" class="form-control" name="price_display" id="price_display" placeholder="Harga Produk" value="{{ old('price') }}" required>
-                                    <input type="hidden" name="price" id="price">
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="quantity">Stok</label>
-                                    <input type="number" class="form-control" name="quantity" id="quantity" placeholder="Jumlah Stok" value="{{ old('quantity') }}" required>
-                                </div>
-
-                                <div class="form-group mb-4">
-                                    <label for="image">Gambar Produk</label>
-                                    <div class="custom-file-wrapper">
-                                        <label for="image" class="btn btn-primary">
-                                            Pilih Gambar
-                                        </label>
-                                        <span id="file-name" class="ms-2 text-muted">Belum ada file dipilih</span>
-                                        <input type="file" name="image" id="image" accept="image/*" style="display: none;" required>
+                    <div class="section-body">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group mb-3">
+                                        <label for="name">Nama Produk</label>
+                                        <input type="text" class="form-control" name="name" id="name"
+                                            placeholder="Nama Produk" value="{{ old('name') }}" required>
                                     </div>
-                                
-                                    <div class="mt-3">
-                                        <img id="imagePreview" src="#" alt="Preview Gambar" style="display: none; max-width: 200px; max-height: 200px; object-fit: cover;" class="rounded shadow-sm border">
+
+                                    <div class="form-group mb-3">
+                                        <label for="price">Harga</label>
+                                        <input type="text" class="form-control" name="price_display" id="price_display"
+                                            placeholder="Harga Produk" value="{{ old('price') }}" required>
+                                        <input type="hidden" name="price" id="price">
                                     </div>
-                                </div>
-                        
-                                <div class="d-flex justify-content-between">
-                                    <a href="{{ route('products.index') }}" class="btn btn-secondary">
-                                        Back
-                                    </a>
-                                    <button type="submit" class="btn btn-success">
-                                        Save Product
-                                    </button>
-                                </div>
-                            </form>
+
+                                    <div class="form-group mb-3">
+                                        <label for="quantity">Stok</label>
+                                        <input type="number" class="form-control" name="quantity" id="quantity"
+                                            placeholder="Jumlah Stok" value="{{ old('quantity') }}" required>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="image">Gambar Produk</label>
+                                        <div class="custom-file-wrapper">
+                                            <label for="image" class="btn btn-primary">
+                                                Pilih Gambar
+                                            </label>
+                                            <span id="file-name" class="ms-2 text-muted">Belum ada file dipilih</span>
+                                            <input type="file" name="image" id="image" accept="image/*"
+                                                style="display: none;" required>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <img id="imagePreview" src="#" alt="Preview Gambar"
+                                                style="display: none; max-width: 200px; max-height: 200px; object-fit: cover;"
+                                                class="rounded shadow-sm border">
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('products.index') }}" class="btn btn-secondary">
+                                            Back
+                                        </a>
+                                        <button type="submit" class="btn btn-success">
+                                            Save Product
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 @endsection
 
 @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const priceDisplay = document.getElementById('price_display');
             const priceHidden = document.getElementById('price');
             const imageInput = document.getElementById('image');
@@ -107,7 +113,7 @@
                 return 'Rp ' + rupiah + (split[1] !== undefined ? ',' + split[1] : '');
             }
 
-            priceDisplay.addEventListener('input', function () {
+            priceDisplay.addEventListener('input', function() {
                 const formatted = formatRupiah(this.value);
                 this.value = formatted;
 
@@ -120,11 +126,11 @@
                 priceHidden.value = priceDisplay.value.replace(/[^,\d]/g, '').replace('.', '');
             }
 
-            imageInput.addEventListener('change', function (event) {
+            imageInput.addEventListener('change', function(event) {
                 const file = event.target.files[0];
                 if (file) {
                     const reader = new FileReader();
-                    reader.onload = function (e) {
+                    reader.onload = function(e) {
                         imagePreview.src = e.target.result;
                         imagePreview.style.display = 'block';
                     };

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <!-- Meta Tags -->
     <meta charset="utf-8">
@@ -28,6 +29,7 @@
     <!-- Additional CSS (if any) -->
     @stack('css')
 </head>
+
 <body>
     <div id="app">
         <div class="main-wrapper">
@@ -69,4 +71,5 @@
     <!-- Additional JS (if any) -->
     @stack('scripts')
 </body>
+
 </html>
