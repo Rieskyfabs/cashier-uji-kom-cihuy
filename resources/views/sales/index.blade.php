@@ -57,7 +57,7 @@ use Illuminate\Support\Facades\DB;
                                         @foreach ($sales as $index => $item)
                                             <td>{{ $sales->firstItem() + $index }}</td>
                                             <td>{{ $item->customer_name }}</td>
-                                            <td>{{ $item->created_at }}</td>
+                                            <td>{{ $item->created_at->format('d-m-Y') }}</td>
                                             <td>{{ 'Rp ' . number_format($item->total_amount, 0, ',', '.') }}</td>
                                             <td>{{ DB::table('users')->where('id', $item->user_id)->value('name') }}</td>
                                             <td class="text-center">

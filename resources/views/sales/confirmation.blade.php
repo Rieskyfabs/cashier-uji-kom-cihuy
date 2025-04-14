@@ -108,42 +108,49 @@
     </div>
 
     @push('scripts')
-        <script>
-            $(document).ready(function() {
-                $('#member_phone').select2({
-                    placeholder: "Pilih Member",
-                    width: '100%',
-                    allowClear: true
-                });
+    <script>
+        $(document).ready(function() {
+            $('#member_phone').select2({
+                placeholder: "Pilih Member",
+                width: '100%',
+                allowClear: true
+            });
 
-                $('#is_member').on('change', function() {
-                    if ($(this).val() === "yes") {
-                        $('#member_selection').fadeIn();
-                    } else {
-                        $('#member_selection').fadeOut();
-                        $('#member_phone').val(null).trigger('change');
-                    }
-                });
-
-                $('#total_pay').on('input', function() {
-                    let value = $(this).val().replace(/\D/g, '');
-                    $('#total_pay_numeric').val(value);
-                    if (value) {
-                        $(this).val(formatRupiah(value));
-                    } else {
-                        $(this).val('');
-                    }
-                });
-
-                $('form').on('submit', function() {
-                    let totalPay = $('#total_pay').val().replace(/\D/g, '');
-                    $('#total_pay_numeric').val(totalPay);
-                });
-
-                function formatRupiah(angka) {
-                    return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            $('#is_member').on('change', function() {
+                if ($(this).val() === "yes") {
+                    $('#member_selection').fadeIn();
+                } else {
+                    $('#member_selection').fadeOut();
+                    $('#member_phone').val(null).trigger('change');
                 }
             });
-        </script>
-    @endpush
+
+            $('#total_pay').on('input', function() {
+                let value = $(this).val().replace(/\D/g, '');
+                $('#total_pay_numeric').val(value);
+                if (value) {
+                    $(this).val(formatRupiah(value));
+                } else {
+                    $(this).val('');
+                }
+            });
+
+            $('form').on('submit', function(e) {
+                let totalPay = parseInt($('#total_pay').val().replace(/\D/g, ''), 10);
+                let totalAmount = parseInt('{{ $totalAmount }}', 10);
+
+                if (totalPay < totalAmount) {
+                    e.preventDefault();
+                    alert('Jumlah Bayar tidak boleh kurang dari Total: Rp ' + formatRupiah(totalAmount.toString()));
+                } else {
+                    $('#total_pay_numeric').val(totalPay);
+                }
+            });
+
+            function formatRupiah(angka) {
+                return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            }
+        });
+    </script>
+@endpush
 @endsection

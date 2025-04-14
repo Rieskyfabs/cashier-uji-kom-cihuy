@@ -22,7 +22,7 @@
                                     </div>
                                     <div class="col-md-6 text-md-end">
                                         <h5>Tanggal Transaksi</h5>
-                                        <p>{{ now()->format('d F Y, H:i') }}</p>
+                                        <p>{{ now()->format('d F Y') }}</p>
                                     </div>
                                 </div>
 
