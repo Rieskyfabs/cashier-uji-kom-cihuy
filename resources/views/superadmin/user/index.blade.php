@@ -45,22 +45,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $index => $item)
-                                <tr>
-                                    <td>{{ $users->firstItem() + $index }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->role }}</td>
-                                    <td class="text-center">
-                                        <a href="{{ route('user.edit', $item->id) }}" class="btn btn-primary">Edit</a>
-                                        <form action="{{ route('user.destroy', $item->id) }}" method="POST" class="delete-form" style="display: inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                @forelse ($users as $index => $item)
+                                    <tr>
+                                        <td>{{ $users->firstItem() + $index }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->role }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ route('user.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                                            <form action="{{ route('user.destroy', $item->id) }}" method="POST" class="delete-form" style="display: inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center">Data tidak ditemukan</td>
+                                    </tr>
+                                @endforelse
                             </tbody>                                
                         </table>
                         <div class="d-flex justify-content-center mt-3">
