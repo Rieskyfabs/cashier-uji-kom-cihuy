@@ -43,41 +43,43 @@
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 @if(Auth::user()->role == 'superadmin')
-                                <th>Action</th>
+                                    <th>Action</th>
                                 @endif
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $index => $item)
-                            <tr>
-                                <td>{{ $products->firstItem() + $index }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td class="text-center"><img src="{{ asset('storage/' . $item->image) }}"
-                                    width="100"></td>
+                            @forelse ($products as $index => $item)
+                                <tr>
+                                    <td>{{ $products->firstItem() + $index }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td class="text-center"><img src="{{ asset('storage/' . $item->image) }}" width="100"></td>
                                     <td>{{ 'Rp ' . number_format($item->price, 0, ',', '.') }}</td>
                                     <td>{{ $item->quantity }}</td>
                                     @if(Auth::user()->role == 'superadmin')
-                                    <td class="text-center">
-                                        <button type="button" class="btn btn-primary edit-stock-btn"
-                                        data-id="{{ $item->id }}" data-name="{{ $item->name }}"
-                                        data-quantity="{{ $item->quantity }}" data-toggle="modal"
-                                        data-target="#editStockModal">
-                                        Edit Stok
-                                    </button>
-                                    <a href="{{ route('products.edit', $item->id) }}"
-                                        class="btn btn-primary">Edit</a>
-                                        <form action="{{ route('products.destroy', $item->id) }}" method="POST"
-                                            class="delete-form" style="display: inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-primary edit-stock-btn"
+                                                data-id="{{ $item->id }}" data-name="{{ $item->name }}"
+                                                data-quantity="{{ $item->quantity }}" data-toggle="modal"
+                                                data-target="#editStockModal">
+                                                Edit Stok
+                                            </button>
+                                            <a href="{{ route('products.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                                            <form action="{{ route('products.destroy', $item->id) }}" method="POST"
+                                                class="delete-form" style="display: inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
                                     @endif
                                 </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="text-center">No products found.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                         <div class="d-flex justify-content-end mt-3">
                             {{ $products->links() }}
                         </div>
