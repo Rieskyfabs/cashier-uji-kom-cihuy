@@ -11,6 +11,43 @@
                         <h1>Dashboard</h1>
                     </div>
                     <div class="section-body">
+
+                        <div class="row">
+ 
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">Laporan Hari ini</div>
+                                    <div class="card-body">
+                                        <p>Total penjualan: {{ number_format($todaySales, 2) }}</p>
+                                        {{-- <p>New Users: {{ $todayUsers }}</p> --}}
+                                        <p>Product Baru: {{ $todayProducts }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">Laporan Bulan Ini</div>
+                                    <div class="card-body">
+                                        <p>Total penjualan: {{ number_format($monthSales, 2) }}</p>
+                                        {{-- <p>New Users: {{ $monthUsers }}</p> --}}
+                                        <p>Product Baru: {{ $monthProducts }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">Laporan Tahun Ini</div>
+                                    <div class="card-body">
+                                        <p>Total penjualan: {{ number_format($yearSales, 2) }}</p>
+                                        {{-- <p>New Users: {{ $yearUsers }}</p> --}}
+                                        <p>Product Baru: {{ $yearProducts }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                         <div class="row">
                             <!-- Stat Card 1 -->
                             <div class="col-md-4">
@@ -54,7 +91,7 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        Penjualan 
+                                        Penjualan
                                     </div>
                                     <div class="card-body">
                                         <canvas id="salesChart"></canvas>
@@ -62,6 +99,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

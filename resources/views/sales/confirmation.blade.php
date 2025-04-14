@@ -88,7 +88,7 @@
 
                                             <div class="form-group mb-3">
                                                 <label for="total_pay">Jumlah Bayar</label>
-                                                <input type="text" class="form-control" id="total_pay" value="">
+                                                <input type="text" class="form-control" id="total_pay" value="" maxlength="13">
                                                 <input type="hidden" id="total_pay_numeric" name="total_pay">
                                             </div>
                                         </div>

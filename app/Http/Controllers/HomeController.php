@@ -16,35 +16,43 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Fetch total counts for stats
         $totalUsers = User::count();
-        $totalSales = Sale::sum('total_amount');  // Assuming 'total_amount' is the column storing the total sales amount
+        $totalSales = Sale::sum('total_amount');
         $totalProducts = Product::count();
 
-        // Fetch data for the charts
-        $userCounts = User::selectRaw('DATE(created_at) as date, count(*) as count')
-                          ->groupBy('date')
-                          ->orderBy('date', 'asc')
-                          ->get();
+        $today = now()->startOfDay();
+        $todaySales = Sale::where('created_at', '>=', $today)->sum('total_amount');
+        $todayUsers = User::where('created_at', '>=', $today)->count();
+        $todayProducts = Product::where('created_at', '>=', $today)->count();
 
-        $saleCounts = Sale::selectRaw('DATE(created_at) as date, sum(total_amount) as total_sales')
-                          ->groupBy('date')
-                          ->orderBy('date', 'asc')
-                          ->get();
+        $startOfMonth = now()->startOfMonth();
+        $monthSales = Sale::where('created_at', '>=', $startOfMonth)->sum('total_amount');
+        $monthUsers = User::where('created_at', '>=', $startOfMonth)->count();
+        $monthProducts = Product::where('created_at', '>=', $startOfMonth)->count();
 
-        $userLabels = $userCounts->pluck('date')->toArray();
-        $userData = $userCounts->pluck('count')->toArray();
+        $startOfYear = now()->startOfYear();
+        $yearSales = Sale::where('created_at', '>=', $startOfYear)->sum('total_amount');
+        $yearUsers = User::where('created_at', '>=', $startOfYear)->count();
+        $yearProducts = Product::where('created_at', '>=', $startOfYear)->count();
+
+        $saleCounts = Sale::selectRaw('DATE(created_at) as date, sum(total_amount) as total_sales')->groupBy('date')->orderBy('date', 'asc')->get();
 
         $saleLabels = $saleCounts->pluck('date')->toArray();
         $saleData = $saleCounts->pluck('total_sales')->toArray();
 
-        // Pass all data to the view
         return view('home', [
             'totalUsers' => $totalUsers,
             'totalSales' => $totalSales,
             'totalProducts' => $totalProducts,
-            'users_labels' => $userLabels,
-            'users_data' => $userData,
+            'todaySales' => $todaySales,
+            'todayUsers' => $todayUsers,
+            'todayProducts' => $todayProducts,
+            'monthSales' => $monthSales,
+            'monthUsers' => $monthUsers,
+            'monthProducts' => $monthProducts,
+            'yearSales' => $yearSales,
+            'yearUsers' => $yearUsers,
+            'yearProducts' => $yearProducts,
             'sales_labels' => $saleLabels,
             'sales_data' => $saleData,
         ]);

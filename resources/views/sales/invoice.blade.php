@@ -13,11 +13,12 @@
                     <div class="invoice-container">
                         <div class="card shadow-sm p-4">
                             <div class="card-body">
+                                <h1 class="fw-bold mb-4"> <strong>Jagoscript Store</strong></h1>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h5>Nomor Invoice: <strong>{{ $invoiceNumber }}</strong></h5>
                                         <h5>Informasi Pelanggan</h5>
-                                        <p><strong>Nama:</strong> {{ $memberName }}</p>
+                                        <p><strong>Nama: </strong> {{ $memberName }}</p>
                                         <p><strong>Status:</strong> {{ $memberId ? 'Member' : 'Non-Member' }}</p>
                                     </div>
                                     <div class="col-md-6 text-md-end">
@@ -42,9 +43,9 @@
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
                                                     <td>{{ $product['name'] }}</td>
-                                                    <td>Rp {{ number_format($product['price'], 0, ',', '.') }}</td>
+                                                    <td class="text-right">Rp {{ number_format($product['price'], 0, ',', '.') }}</td>
                                                     <td>{{ $product['quantity'] }}</td>
-                                                    <td>Rp
+                                                    <td class="text-right">Rp
                                                         {{ number_format($product['price'] * $product['quantity'], 0, ',', '.') }}
                                                     </td>
                                                 </tr>
@@ -54,22 +55,22 @@
                                             <tr>
                                                 <td colspan="3" class="text-end"><strong>Total:</strong></td>
                                                 <td class="text-end"><strong>{{ array_sum(array_column($productData, 'quantity')) }}</strong></td>
-                                                <td><strong>Rp {{ number_format($totalAmount, 0, ',', '.') }}</strong></td>
+                                                <td class="text-right"><strong>Rp {{ number_format($totalAmount, 0, ',', '.') }}</strong></td>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <td colspan="3" class="text-end"><strong>Diskon:</strong></td>
                                                 <td class="text-end"><strong>{{ $discount > 0 ? 'Rp ' . number_format($discount, 0, ',', '.') : '0%' }}</strong></td>
                                                 <td><strong>Rp {{ number_format($totalAmount - $discount, 0, ',', '.') }}</strong></td>
-                                            </tr>
+                                            </tr> --}}
                                             <tr>
-                                                <td colspan="3" class="text-end"><strong>Total Bayar:</strong></td>
-                                                <td class="text-end"><strong>{{ $totalPay > 0 ? 'Rp ' . number_format($totalPay, 0, ',', '.') : 'Tidak Ada' }}</strong></td>
-                                                <td><strong>Rp {{ number_format($totalPay, 0, ',', '.') }}</strong></td>
+                                                <td colspan="4" class="text-end"><strong>Total Bayar:</strong></td>
+                                                <td class="text-right"><strong>{{ $totalPay > 0 ? 'Rp ' . number_format($totalPay, 0, ',', '.') : 'Tidak Ada' }}</strong></td>
+                                                {{-- <td><strong>Rp {{ number_format($totalPay, 0, ',', '.') }}</strong></td> --}}
                                             </tr>
                                             <tr>
                                                 <td colspan="4" class="text-end"><strong>Kembalian:</strong></td>
                                                 {{-- <td class="text-end"><strong>{{ $totalPay > $totalAmount ? 'Rp ' . number_format($totalPay - $totalAmount + $discount, 0, ',', '.') : 'Tidak Ada' }}</strong></td> --}}
-                                                <td><strong>Rp {{ number_format($totalPay - $totalAmount + $discount, 0, ',', '.') }}</strong></td>
+                                                <td class="text-right"><strong>Rp {{ number_format($totalPay - $totalAmount + $discount, 0, ',', '.') }}</strong></td>
                                             </tr>
                                             {{-- <tr>
                                                 <td colspan="5">
