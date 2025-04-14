@@ -1,3 +1,49 @@
+# Ignore SQLite database files
 *.sqlite*
+*.db
 
+# Ignore environment files
 .env
+
+# Ignore log files
+*.log
+
+# Ignore node_modules (if using Node.js)
+node_modules/
+
+# Ignore vendor directory (if using PHP Composer)
+vendor/
+
+# Ignore compiled code and cache
+*.pyc
+*.pyo
+__pycache__/
+*.class
+*.jar
+*.war
+*.dll
+*.exe
+*.o
+*.so
+*.out
+*.a
+*.obj
+*.swp
+*.swo
+*.tmp
+*.cache
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore build artifacts
+dist/
+build/
