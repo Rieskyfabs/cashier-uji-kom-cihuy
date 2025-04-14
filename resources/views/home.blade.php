@@ -19,7 +19,7 @@
                                         Total Users
                                     </div>
                                     <div class="card-body">
-                                        Dummy
+                                        {{ $totalUsers }}
                                     </div>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                         Total Sales
                                     </div>
                                     <div class="card-body">
-                                        DUMMY
+                                        {{ $totalSales }}
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                         Total Products
                                     </div>
                                     <div class="card-body">
-                                        DUMMY
+                                        {{ $totalProducts }}
                                     </div>
                                 </div>
                             </div>
