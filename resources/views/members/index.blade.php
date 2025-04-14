@@ -37,10 +37,10 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Member Code</th>
-                                        <th>Name</th>
-                                        <th>Points</th>
-                                        <th>Phone Number</th>
+                                        <th>Kode Member</th>
+                                        <th>Nama</th>
+                                        <th>Jumlah Points</th>
+                                        <th>Nomor Hp</th>
                                         @if (Auth::user()->role == 'superadmin')
                                             <th>Action</th>
                                         @endif
