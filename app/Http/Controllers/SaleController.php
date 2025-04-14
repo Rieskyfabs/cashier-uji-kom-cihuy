@@ -140,10 +140,4 @@ class SaleController extends Controller
         $sale->product_data = json_decode($sale->product_data, true);
         return view('sales.show', compact('sale'));
     }
-
-    public function destroy(Sale $sale)
-    {
-        $sale->delete();
-        return redirect()->route('sales.index')->with('message', 'Sale deleted successfully!');
-    }
 }
