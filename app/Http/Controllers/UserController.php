@@ -57,7 +57,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->password = Hash::make($request->password);
         $user->role = $request->role;
-        $user->save();
+        $user->save();  
 
         return redirect()->route('user.index')->with('message', 'User updated successfully!');
     }
@@ -68,5 +68,12 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('user.index');
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+
+        return view('superadmin.user.show', compact('user'));
     }
 }
